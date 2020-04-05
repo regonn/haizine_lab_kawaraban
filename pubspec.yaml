@@ -1,0 +1,14 @@
+name: haizine_lab_kawaraban
+version: 1.0.0
+homepage: https://github.com/regonn/haizine_lab_kawaraban
+author: regonn <programmer@haizine.art>
+
+environment:
+  sdk: ">=2.2.0 <3.0.0"
+
+dependencies:
+  pdf:
+  intl:
+
+dev_dependencies:
+  build_runner:
