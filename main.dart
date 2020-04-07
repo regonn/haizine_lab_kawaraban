@@ -69,25 +69,35 @@ void main() {
         child: Column(
           children: <Widget>[
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                    border: BoxBorder(
-                        top: true,
-                        left: true,
-                        right: true,
-                        bottom: true,
-                        color: black,
-                        width: 4),
-                  ),
-                  padding: const EdgeInsets.all(2),
-                  margin: const EdgeInsets.only(right: 4, bottom: 4),
-                  child: Image(
-                    logo_image,
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: BoxBorder(
+                          top: true,
+                          left: true,
+                          right: true,
+                          bottom: true,
+                          color: black,
+                          width: 4),
+                    ),
+                    padding: const EdgeInsets.all(2),
+                    margin: const EdgeInsets.only(right: 4, bottom: 4),
+                    child: Expanded(
+                      child: Image(
+                        logo_image,
+                      ),
+                    ),
                   ),
                 ),
-                Container(
+                Expanded(
+                  flex: 3,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Header(
                         level: 0,
@@ -100,62 +110,45 @@ void main() {
                         ),
                       ),
                       Paragraph(text: '''
-                        みんなで頑張りましょう
-                        ''', style: myStyle),
+ついにオープンしましたねぇ
+嬉しい限りです
+                      ''', style: myStyle),
                     ],
                   ),
                 ),
               ],
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(4),
+                // FIXME: 縦長画像があると、すぐ崩れてしまう
+                // Expanded(
+                //   flex: 1,
+                //   child: Container(
+                //     padding: EdgeInsets.all(4),
+                //     child: Column(
+                //       children: [
+                //         Expanded(
+                //           child: Image(haiku_image),
+                //         ),
+                //         Text("俳句", style: myStyle)
+                //       ],
+                //     ),
+                //   ),
+                // ),
+                Expanded(
+                  flex: 1,
                   child: Column(
-                    children: [Image(haiku_image), Text("俳句", style: myStyle)],
+                    children: [
+                      Expanded(
+                        child: Image(hana_image),
+                      ),
+                      Text("写真", style: myStyle)
+                    ],
                   ),
                 ),
-                Column(
-                  children: [Image(hana_image), Text("写真", style: myStyle)],
-                ),
-                Column(
-                  children: [
-                    Header(
-                      level: 0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text("気になったTech NEWS", style: myStyle),
-                        ],
-                      ),
-                    ),
-                    Bullet(text: 'ブロックチェーン技術', style: myStyle),
-                    Container(
-                      child: Header(
-                        level: 0,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text("regonn&curry.fm(Podcast)", style: myStyle)
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Header(
-                      level: 0,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[Text("進行中のプロジェクト", style: myStyle)],
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  width: 300,
+                Expanded(
+                  flex: 3,
                   child: Column(
                     children: [
                       Header(
@@ -163,21 +156,67 @@ void main() {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Text("編集後記", style: myStyle),
+                            Text("気になったTech NEWS", style: myStyle),
                           ],
                         ),
                       ),
-                      Paragraph(
-                        text: '''
-                          今回、コミュニティを新しく作ったので、活動報告も作っていこうと思い、
-                          PDF生成についても色々と挑戦してみました。
-                          最終的には、コードで残った方がメンテナンスもしやすいかなと、
-                          DartでPDFを生成しているんですが、
-                          思った以上に沼で、画像の画質だとかレイアウトは今後も改善していきたいですね。
-                          ''',
-                        style: myStyle,
-                      )
+                      Bullet(text: 'ブロックチェーン技術', style: myStyle),
+                      Container(
+                        child: Header(
+                          level: 0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text("regonn&curry.fm(Podcast)", style: myStyle)
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Column(
+                    children: [
+                      Header(
+                        level: 0,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text("進行中のプロジェクト", style: myStyle)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Header(
+                          level: 0,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: <Widget>[
+                              Text("編集後記", style: myStyle),
+                            ],
+                          ),
+                        ),
+                        Paragraph(
+                          text: '''
+今回、コミュニティを新しく作ったので、活動報告も作っていこうと思い、
+PDF生成についても色々と挑戦してみました。
+最終的には、コードで残った方がメンテナンスもしやすいかなと、
+DartでPDFを生成しているんですが、
+思った以上に沼で、画像の画質だとかレイアウトは今後も改善していきたいですね。
+                          ''',
+                          style: myStyle,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
